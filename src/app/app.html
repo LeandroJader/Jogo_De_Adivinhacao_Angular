@@ -1,20 +1,93 @@
-<div class="d-flex flex-column justify-content-center align-items-center h-100">
+<div class="container py-4 text-center">
+  <!-- Título -->
+  <h1 class="fw-bold mb-4">Jogo de Adivinhação</h1>
 
-  <h1>Jogo de Adivinhação</h1>
+  <!-- Seleção de Dificuldade -->
+  <section class="mb-5">
+    <h2 class="h4 mb-3">Seleção de Dificuldade</h2>
 
-<main class="row-cols-3 d-flex align-items-center bg-danger-subtle rounded text-center p-5 mt-5">
-   <label class="display-1">{{DicaNumeroMaiorQue}}></label>
-   <div class="d-flex flex-column gap-2">
-     <input [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number " max="100">
+    <div class="row g-2 justify-content-center">
+      <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+        <button (click)="selecionarDificuldade('facil')" class="btn btn-primary w-100">
+          Fácil
+        </button>
+      </div>
+      <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+        <button (click)="selecionarDificuldade('medio')" class="btn btn-warning w-100">
+          Médio
+        </button>
+      </div>
+      <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+        <button (click)="selecionarDificuldade('dificil')" class="btn btn-danger w-100">
+          Difícil
+        </button>
+      </div>
+    </div>
+  </section>
 
-    @if (!jogoEstaFinalizado) {
-       <button (click)="adivinhar()" class="btn btn-primary">Adivinhar</button>   }
+  <!-- Ranking -->
+  <section class="mb-5">
+    <h2 class="h4 mb-3">Ranking de Pontuação</h2>
 
-       @else {
-               <button (click)="reiniciar()" class="btn btn-success">reiniciar</button>
-       }
-   </div>
+    <main
+      class="bg-light border rounded shadow-sm p-3 p-sm-4"
+      style="min-height: 200px; max-width: 500px; margin: 0 auto"
+    >
+      <h5 class="mt-0">Pontuações Anteriores</h5>
+      <hr />
 
-   <label class="display-1"><{{DicaNumeromenorQue}}</label>
-</main>
-</div>A
+      @if (rodadasAnteriores.length === 0) {
+        <p class="text-muted">Nenhuma rodada registrada ainda.</p>
+      }
+
+      @for (pontuacao of rodadasAnteriores; track $index) {
+        <div class="row mb-2 justify-content-center">
+          <div class="col-10 col-md-8 bg-white border rounded py-2">
+            Rodada {{ $index + 1 }}: <strong>{{ pontuacao }}</strong> pontos
+          </div>
+        </div>
+      }
+    </main>
+  </section>
+
+  <!-- Área do Jogo -->
+  <section
+    class="d-flex flex-column flex-md-row align-items-center justify-content-center bg-danger-subtle rounded p-4 p-sm-5 text-center gap-3"
+  >
+    <label class="display-6 mb-0">{{ DicaNumeroMaiorQue }}></label>
+
+    <div class="d-flex flex-column align-items-center gap-2">
+      <input
+        [disabled]="!DificuldadeSelecionada || jogoEstaFinalizado"
+        [(ngModel)]="numeroDigitado"
+        class="form-control text-center fs-4"
+        type="number"
+        max="100"
+        style="width: 120px"
+      />
+
+      <button
+        [disabled]="!DificuldadeSelecionada || jogoEstaFinalizado"
+        (click)="adivinhar()"
+        class="btn btn-primary w-100"
+      >
+        Adivinhar
+      </button>
+
+      <button (click)="reiniciar()" class="btn btn-success w-100">Reiniciar</button>
+    </div>
+
+    <label class="display-6 mb-0"><{{ DicaNumeromenorQue }}</label>
+  </section>
+
+  <!-- Status -->
+  @if (DificuldadeSelecionada) {
+    <section
+      class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3 mt-4"
+    >
+      <span class="fs-5"> <strong>Pontuação:</strong> {{ pontuacao }} </span>
+
+      <span class="fs-5"> <strong>Tentativas restantes:</strong> {{ tentativasRestantes }} </span>
+    </section>
+  }
+</div>
