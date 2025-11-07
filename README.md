@@ -1,59 +1,33 @@
+![Prévia do Jogo de Adivinhação](https://i.imgur.com/ihUzQhD.gif)
+
 # JogoDaAdivinhacao
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+Este projeto tem como finalidade revisar conceitos do Angular e praticar a linguagem TypeScript por meio da criação de um jogo interativo de adivinhação.
 
-## Development server
+O Jogo da Adivinhação permite que o jogador escolha entre três níveis de dificuldade:  
+- Fácil – mais rodadas disponíveis para adivinhar o número.  
+- Médio – número intermediário de tentativas.  
+- Difícil – menos rodadas, exigindo mais precisão.  
 
-To start a local development server, run:
+O jogador deve tentar adivinhar o número secreto gerado aleatoriamente.  
+O sistema indica se o número digitado é maior ou menor que o número correto, até que o jogador acerte ou acabe suas tentativas.  
+
+Além disso, o jogo possui ranking de pontuação das últimas partidas.
+
+---
+
+## Tecnologias Utilizadas
+
+- Angular 20.3.2  
+- TypeScript  
+- Bootstrap / CSS Responsivo  
+- HTML5
+
+---
+
+## Servidor de Desenvolvimento
+
+Para iniciar um servidor local de desenvolvimento, execute:
 
 ```bash
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
