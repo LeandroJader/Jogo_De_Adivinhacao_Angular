@@ -1,22 +1,18 @@
 <div class="d-flex flex-column justify-content-center align-items-center h-100">
- 
+
   <h1>Jogo de Adivinhação</h1>
 
 <main class="row-cols-3 d-flex align-items-center bg-danger-subtle rounded text-center p-5 mt-5">
    <label class="display-1">{{DicaNumeroMaiorQue}}></label>
-   <div class=" d-flex flex-column gap-2">
+   <div class="d-flex flex-column gap-2">
      <input [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number " max="100">
 
     @if (!jogoEstaFinalizado) {
        <button (click)="adivinhar()" class="btn btn-primary">Adivinhar</button>   }
-     
+
        @else {
                <button (click)="reiniciar()" class="btn btn-success">reiniciar</button>
        }
-
-    
-
-
    </div>
 
    <label class="display-1"><{{DicaNumeromenorQue}}</label>
